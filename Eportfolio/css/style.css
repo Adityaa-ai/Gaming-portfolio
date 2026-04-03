@@ -1,0 +1,312 @@
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #020617;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* ===== BACKGROUND GLOW ===== */
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(56,189,248,0.12), transparent);
+  top: 20%;
+  left: 20%;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+/* ===== HOME ===== */
+#home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s ease;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.player-info span {
+  margin-left: 15px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* ===== LAYOUT ===== */
+.home-container {
+  flex: 1;
+  display: flex;
+}
+
+.player-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player-title {
+  font-weight: 600;
+  color: #38bdf8;
+}
+
+.menu-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== AVATAR ===== */
+.avatar {
+  width: 260px;
+  border-radius: 12px;
+  animation: float 4s ease-in-out infinite;
+  transition: 0.4s;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== PLAYER INFO ===== */
+.player-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-name {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tagline {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+/* ===== BUTTONS ===== */
+.menu-section button {
+  width: 220px;
+  margin: 10px;
+  padding: 14px;
+  background: #020617;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.menu-section button::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background: rgba(56,189,248,0.1);
+  left: 0;
+  top: 0;
+  transition: 0.3s;
+}
+
+.menu-section button:hover::before {
+  width: 100%;
+}
+
+.menu-section button:hover {
+  border-color: #38bdf8;
+}
+
+/* ===== SCENES ===== */
+.scene {
+  display: none;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ===== CARDS ===== */
+.card {
+  border: 1px solid #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  margin: 15px 0;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.1);
+}
+
+/* ===== PROJECT DEMO ===== */
+#project-demo {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #334155;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== XP BAR ===== */
+.xp-bar {
+  width: 120px;
+  height: 6px;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+#xp-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  transition: width 0.4s ease;
+}
+
+/* ===== SKILL TREE ===== */
+.skill-tree {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.skill {
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.skill.unlocked {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56,189,248,0.3);
+}
+
+.skill.locked {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== ACHIEVEMENT ===== */
+.achievement {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #020617;
+  border: 1px solid #38bdf8;
+  padding: 12px 20px;
+  border-radius: 6px;
+  display: none;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  /* STACK LAYOUT */
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* AVATAR */
+  .avatar {
+    width: 200px;
+  }
+
+  /* PLAYER SECTION */
+  .player-section {
+    padding-top: 20px;
+  }
+
+  /* MENU SECTION */
+  .menu-section {
+    margin-top: 20px;
+  }
+
+  /* BUTTONS */
+  .menu-section button {
+    width: 80%;
+    max-width: 280px;
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .player-info span {
+    margin: 5px;
+    font-size: 12px;
+  }
+
+  /* CARDS */
+  .card {
+    padding: 15px;
+  }
+
+  /* SKILL TREE */
+  .skill-tree {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .skill {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  /* PROJECT DEMO */
+  #project-demo {
+    min-height: 120px;
+    font-size: 14px;
+  }
+}
