@@ -1,34 +1,34 @@
 
 // ===== SHOW SCENE =====
+// ===== SHOW SCENE (PRO VERSION) =====
 function showScene(id) {
   const home = document.getElementById("home");
   const target = document.getElementById(id);
 
-  // Fade out home
-  home.style.opacity = 0;
-
-  // Fade out all scenes
-  document.querySelectorAll(".scene").forEach(scene => {
-    scene.style.opacity = 0;
+  // Fade out everything
+  document.querySelectorAll("#home, .scene").forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = "translateY(10px)";
   });
 
   setTimeout(() => {
-    // Hide home
-    home.style.display = "none";
-
-    // Hide all scenes
-    document.querySelectorAll(".scene").forEach(scene => {
-      scene.style.display = "none";
+    // Hide all
+    document.querySelectorAll("#home, .scene").forEach(el => {
+      el.style.display = "none";
     });
 
-    // Show target scene
+    // Show target
     target.style.display = "block";
 
-    // Force reflow (important for smooth animation)
-    target.offsetHeight;
+    // Reset animation state
+    target.style.transform = "translateY(10px)";
+    target.style.opacity = 0;
 
-    // Fade in
-    target.style.opacity = 1;
+    // Smooth enter animation
+    requestAnimationFrame(() => {
+      target.style.opacity = 1;
+      target.style.transform = "translateY(0)";
+    });
 
   }, 250);
 }
@@ -38,25 +38,26 @@ function showScene(id) {
 window.goHome = function() {
   const home = document.getElementById("home");
 
-  // Fade out all scenes
+
   document.querySelectorAll(".scene").forEach(scene => {
     scene.style.opacity = 0;
+    scene.style.transform = "translateY(10px)";
   });
 
+
   setTimeout(() => {
-    // Hide scenes
+    
     document.querySelectorAll(".scene").forEach(scene => {
       scene.style.display = "none";
     });
 
-    // Show home
+
     home.style.display = "flex";
 
-    // Force reflow
-    home.offsetHeight;
-
-    // Fade in
-    home.style.opacity = 1;
+    requestAnimationFrame(() => {
+      home.style.opacity = 1;
+      home.style.transform = "translateY(0)";
+    });
 
   }, 250);
 }
